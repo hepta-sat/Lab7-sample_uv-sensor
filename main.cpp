@@ -1,12 +1,10 @@
 #include "mbed.h"
-
-DigitalOut myled(LED1);
-
+AnalogIn sensorUV(p15);
+float UVvalue;
 int main() {
-  while(1) {
-    myled = 1;
-    wait(0.2);
-    myled = 0;
-    wait(0.2);
-  }
+    while (true) {
+        UVvalue = sensorUV;
+        printf("\rUV Value = %3.2f%%\r\n",UVvalue*100);
+        wait(1.0);
+    }
 }
